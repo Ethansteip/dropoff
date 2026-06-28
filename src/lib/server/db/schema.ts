@@ -1,7 +1,8 @@
-import { pgTable, serial, integer, text } from 'drizzle-orm/pg-core';
+import { pgTable, serial, text, timestamp } from 'drizzle-orm/pg-core';
 
-export const task = pgTable('task', {
+export const waitlist = pgTable('waitlist', {
 	id: serial('id').primaryKey(),
-	title: text('title').notNull(),
-	priority: integer('priority').notNull().default(1)
+	email: text('email').notNull().unique(),
+	shopType: text('shop_type'),
+	createdAt: timestamp('created_at').notNull().defaultNow()
 });
