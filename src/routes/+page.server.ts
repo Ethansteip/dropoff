@@ -1,7 +1,8 @@
 import { fail } from '@sveltejs/kit';
 import type { Actions } from './$types';
+import { db } from '$lib/server/db';
+import { waitlist } from '$lib/server/db/schema';
 
-// Simple, permissive email check — good enough for a waitlist gate.
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export const actions: Actions = {
@@ -15,11 +16,10 @@ export const actions: Actions = {
 		}
 
 		try {
-			// TODO: replace with Drizzle insert — e.g.
-			// await db
-			//   .insert(waitlist)
-			//   .values({ email, shopType, createdAt: new Date() })
-			//   .onConflictDoUpdate({ target: waitlist.email, set: { shopType } });
+			await db
+				.insert(waitlist)
+				.values({ email, shopType, createdAt: new Date() })
+				.onConflictDoUpdate({ target: waitlist.email, set: { shopType } });
 		} catch {
 			return fail(500, { error: 'Something went wrong. Please try again.', email });
 		}
