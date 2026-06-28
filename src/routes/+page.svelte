@@ -29,7 +29,11 @@
 
 <main>
 	<!-- Hero -->
-	<section class="px-5 pt-14 pb-20 sm:pt-20 sm:pb-28">
+	<section
+		id="waitlist"
+		aria-labelledby="waitlist-heading"
+		class="px-5 pt-14 pb-20 sm:pt-20 sm:pb-28"
+	>
 		<div class="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-10">
 			<div class="text-center lg:text-left">
 				<p
@@ -170,7 +174,7 @@
 	</section>
 
 	<!-- Waitlist CTA -->
-	<section id="waitlist" aria-labelledby="waitlist-heading" class="scroll-mt-20 px-5 pb-24">
+	<section class="scroll-mt-20 px-5 pb-24">
 		<div
 			class="mx-auto max-w-2xl rounded-2xl border border-border bg-card p-8 text-center shadow-sm sm:p-12"
 		>
