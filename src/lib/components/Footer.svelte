@@ -8,7 +8,6 @@
 	>
 		<span class="font-serif text-lg font-semibold tracking-tight text-foreground">DropOff</span>
 		<div class="flex flex-col gap-1 text-sm text-muted-foreground sm:items-end">
-			<a href="mailto:hello@getdropoff.com" class="hover:text-foreground">hello@getdropoff.com</a>
 			<span>© {year} DropOff. All rights reserved.</span>
 		</div>
 	</div>

@@ -11,12 +11,12 @@
 		{
 			icon: MessageSquareText,
 			title: 'Customer gets a text',
-			body: 'They get a text with a link to track their order in real time. No app. No account.'
+			body: 'They receive a link to follow their order status — no app, no account, nothing to download.'
 		},
 		{
 			icon: CircleCheck,
 			title: 'Mark it ready',
-			body: 'One click sends a “Your order is ready for pickup” text automatically.'
+			body: 'One click sends a "Your order is ready for pickup" text automatically.'
 		}
 	];
 </script>

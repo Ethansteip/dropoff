@@ -3,9 +3,10 @@
 
 	let {
 		children,
+		overlay,
 		label = 'Phone preview',
 		class: className = ''
-	}: { children: Snippet; label?: string; class?: string } = $props();
+	}: { children: Snippet; overlay?: Snippet; label?: string; class?: string } = $props();
 </script>
 
 <!-- Decorative product mockup; not real interactive chrome. -->
@@ -28,4 +29,5 @@
 	<div class="flex min-h-148 flex-col overflow-hidden rounded-[2rem] bg-background">
 		{@render children()}
 	</div>
+	{@render overlay?.()}
 </div>

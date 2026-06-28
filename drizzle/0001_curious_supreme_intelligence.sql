@@ -1,0 +1,1 @@
+ALTER TABLE "waitlist" ADD COLUMN "shop_type_other" text;

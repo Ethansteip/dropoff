@@ -36,7 +36,7 @@
 					use:reveal
 					class="mb-5 font-mono text-xs uppercase tracking-[0.18em] text-muted-foreground"
 				>
-					Order tracking for repair shops
+					Order tracking for service businesses
 				</p>
 				<h1
 					use:reveal={{ delay: 60 }}
@@ -49,8 +49,8 @@
 					use:reveal={{ delay: 120 }}
 					class="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground text-pretty lg:mx-0"
 				>
-					The moment you take in an order, DropOff texts your customer a link to track it. When
-					it's ready, they get another text. No more callbacks, no more “is it done yet?”
+					Take in an order and your customer gets a tracking link by text. When it's ready, they get
+					another — and show up on their own.
 				</p>
 
 				<div use:reveal={{ delay: 180 }} class="mx-auto mt-9 max-w-md lg:mx-0">
@@ -58,7 +58,7 @@
 				</div>
 
 				<p use:reveal={{ delay: 240 }} class="mt-6 text-sm text-muted-foreground">
-					Built for tailors · dry cleaners · cobblers · jewelers · watch repair · bike shops
+					Built for tailors · repair shops · dry cleaners · cobblers · jewelers · at home businesses
 				</p>
 			</div>
 
@@ -85,12 +85,11 @@
 					use:reveal={{ delay: 60 }}
 					class="font-serif text-[clamp(1.75rem,4vw,2.5rem)] font-semibold leading-tight tracking-tight text-foreground text-balance"
 				>
-					They just tap the link. No app, no account.
+					No more "I'll call you when it's done."
 				</h2>
 				<p use:reveal={{ delay: 120 }} class="mt-5 text-lg leading-relaxed text-muted-foreground">
-					The link opens a clean page with your shop’s name on it — no login, no download. Your
-					customer follows their order from dropped off to ready, and gets a text the moment it’s
-					done. So they never have to call to check.
+					Your customer taps a link and sees exactly where their order stands — on a live status
+					page, branded to your shop. The moment it's ready, they get a text.
 				</p>
 			</div>
 		</div>
@@ -115,8 +114,8 @@
 					class="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-muted-foreground"
 				>
 					Take in a new order in under a minute — name, phone, what they dropped off. DropOff texts
-					the customer for you and keeps every order in one place, so you always know what’s done
-					and what’s still on the bench.
+					the customer for you and keeps every order in one place, so you always know what's done
+					and what's still on the bench. Dead simple order management.
 				</p>
 			</div>
 			<div use:reveal={{ delay: 120 }} class="mt-12">
@@ -144,7 +143,7 @@
 					class="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-muted-foreground"
 				>
 					Open an order, mark where it stands, and DropOff texts the customer and updates their
-					tracking page at the same moment. No extra step, no second tool.
+					tracking page at the same moment. No extra step, no phone tag.
 				</p>
 			</div>
 			<div use:reveal={{ delay: 120 }} class="mt-14">
@@ -161,8 +160,8 @@
 				use:reveal
 				class="border-l-2 border-primary pl-6 font-serif text-[clamp(1.5rem,3.2vw,2.125rem)] font-medium leading-snug text-foreground text-balance"
 			>
-				If you’re running a tailor shop, shoe repair counter, dry cleaner, or jewelry bench and
-				you’re still tracking orders in a notebook — DropOff is for you.
+				If you're running a tailor shop, shoe repair counter, dry cleaner, or jewelry bench and
+				you're still tracking orders in a notebook or spreadsheet — DropOff is for you.
 			</blockquote>
 			<p use:reveal={{ delay: 80 }} class="mt-5 pl-6 text-lg text-muted-foreground">
 				Setup takes 10 minutes. No training required.

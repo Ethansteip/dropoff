@@ -50,8 +50,8 @@
 				</span>
 			</div>
 			<p class="mt-1.5 text-[0.82rem] leading-relaxed text-foreground/90">
-				Started on your coat this morning — the hem is done and the new buttons are going on now. Still on track for Thursday.
-				— Bella
+				Started on your coat this morning — the hem is done and the new buttons are going on now.
+				Still on track for Thursday. — Bella
 			</p>
 		</div>
 

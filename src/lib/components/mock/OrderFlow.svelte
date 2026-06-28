@@ -261,7 +261,8 @@
 					class="flex items-center gap-2 rounded-lg bg-secondary/60 px-3.5 py-2.5 text-[0.74rem] text-muted-foreground"
 				>
 					<MapPin class="size-3.5 shrink-0" aria-hidden="true" />
-					1142 Valencia St, San Francisco · Pickup anytime
+					<!-- street number split out so iOS data detectors can't match an address -->
+					<span>1142</span> Valencia St, San Francisco · Pickup anytime
 				</div>
 			</div>
 		</div>

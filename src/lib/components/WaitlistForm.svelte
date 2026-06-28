@@ -19,7 +19,11 @@
 	let clientError = $state('');
 	let email = $state('');
 	let shopType = $state('');
+	let shopOther = $state('');
 	let shopSaved = $state(false);
+
+	// "Other" requires a written answer before the survey can be saved.
+	const surveyIncomplete = $derived(!shopType || (shopType === 'other' && !shopOther.trim()));
 
 	// On no-JS submits the page re-renders with the `form` prop; fall back to it.
 	const showConfirmation = $derived(submitted || form?.success === true);
@@ -75,7 +79,22 @@
 						{/each}
 					</RadioGroup>
 
-					<Button type="submit" size="sm" variant="secondary" disabled={loading || !shopType}>
+					{#if shopType === 'other'}
+						<div>
+							<Label for={`${id}-shop-other`} class="sr-only">Tell us what kind of shop you run</Label>
+							<Input
+								id={`${id}-shop-other`}
+								name="shopTypeOther"
+								bind:value={shopOther}
+								placeholder="What kind of shop do you run?"
+								maxlength={120}
+								autocomplete="off"
+								class="h-10 bg-background text-sm"
+							/>
+						</div>
+					{/if}
+
+					<Button type="submit" size="sm" variant="secondary" disabled={loading || surveyIncomplete}>
 						{loading ? 'Saving…' : 'Save my answer'}
 					</Button>
 				</form>
@@ -114,7 +133,7 @@
 					placeholder="you@yourshop.com"
 					aria-invalid={errorMessage ? 'true' : undefined}
 					aria-describedby={errorMessage ? `${id}-error` : undefined}
-					class="h-11 flex-1 bg-card text-base"
+					class="h-11 w-full bg-card text-base sm:flex-1"
 				/>
 				<Button type="submit" disabled={loading} class="h-11 shrink-0">
 					{loading ? 'Joining…' : 'Join the waitlist'}

@@ -1,17 +1,38 @@
 <script lang="ts">
 	import PhoneFrame from './PhoneFrame.svelte';
-	import { ChevronLeft, Link2, ArrowUp } from '@lucide/svelte';
+	import { ChevronLeft, Link2, ArrowUp, MessageSquareText } from '@lucide/svelte';
 </script>
 
-<PhoneFrame label="Text message a customer receives from the shop, with a tracking link">
+{#snippet notification()}
+	<!-- New-message notification badge that pops in on load -->
+	<div class="notif-pop absolute -top-3.5 -right-3.5 z-30" aria-hidden="true">
+		<div
+			class="relative flex size-12 items-center justify-center rounded-[1.15rem] bg-primary text-primary-foreground shadow-xl shadow-primary/25 ring-4 ring-background"
+		>
+			<MessageSquareText class="size-6" />
+			<span class="absolute -top-1 -right-1 flex size-5 items-center justify-center">
+				<span
+					class="absolute inline-flex size-full rounded-full bg-red-500/50 motion-safe:animate-ping"
+				></span>
+				<span
+					class="relative flex size-5 items-center justify-center rounded-full bg-red-500 text-[0.62rem] font-bold leading-none text-white ring-2 ring-background"
+				>
+					1
+				</span>
+			</span>
+		</div>
+	</div>
+{/snippet}
+
+<PhoneFrame
+	overlay={notification}
+	label="Text message a customer receives from the shop, with a tracking link"
+>
 	<!-- status bar -->
 	<div
 		class="flex items-center justify-between px-5 pt-5 pb-1 font-mono text-[0.7rem] text-foreground/70"
 	>
 		<span>9:41</span>
-		<span class="flex items-center gap-1" aria-hidden="true">
-			<span class="inline-block h-2.5 w-4 rounded-[2px] border border-green-300"></span>
-		</span>
 	</div>
 
 	<!-- conversation header -->
@@ -85,3 +106,26 @@
 		</span>
 	</div>
 </PhoneFrame>
+
+<style>
+	.notif-pop {
+		animation: notif-pop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.7s both;
+	}
+
+	@keyframes notif-pop {
+		from {
+			opacity: 0;
+			transform: scale(0.4) translateY(0.5rem);
+		}
+		to {
+			opacity: 1;
+			transform: scale(1) translateY(0);
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.notif-pop {
+			animation: none;
+		}
+	}
+</style>
