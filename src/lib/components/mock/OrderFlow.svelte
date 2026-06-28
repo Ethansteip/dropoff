@@ -1,6 +1,14 @@
 <script lang="ts">
 	import PhoneFrame from './PhoneFrame.svelte';
-	import { Check, ChevronLeft, Scissors, Phone, StickyNote, MapPin } from '@lucide/svelte';
+	import {
+		Check,
+		ChevronLeft,
+		Scissors,
+		Phone,
+		StickyNote,
+		MapPin,
+		MessageSquareText
+	} from '@lucide/svelte';
 	import { fly } from 'svelte/transition';
 
 	// Drives the looping demo: a clerk marks the order "ready for pickup" and the
@@ -165,7 +173,35 @@
 
 	<!-- customer: the tracking page reacts -->
 	<PhoneFrame label="The customer's tracking page, updating in real time">
-		<div class="flex h-full flex-col px-4 pt-9 pb-5">
+		<div class="relative flex h-full flex-col px-4 pt-9 pb-5">
+			<!-- incoming pickup text, mirrors the moment the clerk marks the order ready -->
+			{#if active}
+				<div
+					transition:fly={{ y: -20, duration: 320 }}
+					class="absolute inset-x-2 top-2 z-30 flex items-center gap-2.5 rounded-2xl border border-border bg-card/95 px-3 py-2.5 shadow-[0_14px_30px_-10px_rgba(28,32,45,0.45)] backdrop-blur"
+					aria-hidden="true"
+				>
+					<div
+						class="flex size-7 shrink-0 items-center justify-center rounded-lg bg-primary text-primary-foreground"
+					>
+						<MessageSquareText class="size-4" />
+					</div>
+					<div class="min-w-0 flex-1">
+						<div class="flex items-center justify-between gap-2">
+							<span
+								class="font-mono text-[0.52rem] font-semibold uppercase tracking-wide text-muted-foreground"
+							>
+								Bella's Tailoring
+							</span>
+							<span class="font-mono text-[0.52rem] text-muted-foreground">now</span>
+						</div>
+						<p class="truncate text-[0.74rem] font-medium leading-snug text-foreground">
+							Your navy wool coat is ready for pickup 🎉
+						</p>
+					</div>
+				</div>
+			{/if}
+
 			<div class="flex items-center gap-2">
 				<div
 					class="flex size-8 items-center justify-center rounded-lg bg-primary text-primary-foreground"

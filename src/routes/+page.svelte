@@ -12,9 +12,9 @@
 
 	let { form }: PageProps = $props();
 
-	const title = 'DropOff — SMS order tracking for repair shops';
+	const title = 'DropOff — SMS order tracking for service businesses';
 	const description =
-		'DropOff texts your customers a link to track their repair order, then texts them again when it’s ready. No app, no account, no more callbacks. Built for tailors, cobblers, dry cleaners, and small repair shops.';
+		'DropOff texts your customers a link to track their order, then texts them again when it’s ready. No app, no account, no more callbacks. Built for tailors, cobblers, dry cleaners, and small repair shops.';
 </script>
 
 <svelte:head>

@@ -81,7 +81,9 @@
 
 					{#if shopType === 'other'}
 						<div>
-							<Label for={`${id}-shop-other`} class="sr-only">Tell us what kind of shop you run</Label>
+							<Label for={`${id}-shop-other`} class="sr-only"
+								>Tell us what kind of shop you run</Label
+							>
 							<Input
 								id={`${id}-shop-other`}
 								name="shopTypeOther"
@@ -94,7 +96,12 @@
 						</div>
 					{/if}
 
-					<Button type="submit" size="sm" variant="secondary" disabled={loading || surveyIncomplete}>
+					<Button
+						type="submit"
+						size="sm"
+						variant="secondary"
+						disabled={loading || surveyIncomplete}
+					>
 						{loading ? 'Saving…' : 'Save my answer'}
 					</Button>
 				</form>
