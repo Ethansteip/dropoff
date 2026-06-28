@@ -1,16 +1,16 @@
 <script lang="ts">
 	import PhoneFrame from './PhoneFrame.svelte';
-	import { Check, Scissors, Phone } from '@lucide/svelte';
+	import { Check, Scissors, Phone, StickyNote, MapPin } from '@lucide/svelte';
 
 	const steps = [
 		{ label: 'Dropped off', when: 'Tue, Jun 24 · 9:14 AM', state: 'done' },
 		{ label: 'In progress', when: 'Wed, Jun 25 · 11:02 AM', state: 'current' },
-		{ label: 'Ready for pickup', when: 'We’ll text you', state: 'pending' }
+		{ label: 'Ready for pickup', when: 'Est. ready Thu, Jun 26', state: 'pending' }
 	] as const;
 </script>
 
 <PhoneFrame label="The order tracking page a customer opens from the text link">
-	<div class="flex h-full flex-col px-5 pt-6 pb-6">
+	<div class="flex h-full flex-col px-5 pt-9 pb-6">
 		<!-- mock shop brand -->
 		<div class="flex items-center gap-2.5">
 			<div
@@ -30,13 +30,29 @@
 		<!-- order summary -->
 		<div class="mt-5 rounded-xl border border-border bg-secondary/50 p-4">
 			<div class="flex items-center justify-between">
-				<span class="font-mono text-[0.62rem] uppercase tracking-wide text-muted-foreground">Order</span>
+				<span class="font-mono text-[0.62rem] uppercase tracking-wide text-muted-foreground"
+					>Order</span
+				>
 				<span class="font-mono text-sm font-medium text-foreground">#8KQ2</span>
 			</div>
 			<p class="mt-2 font-serif text-lg font-semibold leading-snug text-foreground">
 				Navy wool coat
 			</p>
 			<p class="text-[0.8rem] text-muted-foreground">Hem &amp; replace two buttons</p>
+		</div>
+
+		<!-- note from the shop -->
+		<div class="mt-4 rounded-xl border border-border bg-accent/40 p-3.5">
+			<div class="flex items-center gap-1.5">
+				<StickyNote class="size-3.5 text-primary" aria-hidden="true" />
+				<span class="font-mono text-[0.58rem] uppercase tracking-wide text-muted-foreground">
+					Note from the shop
+				</span>
+			</div>
+			<p class="mt-1.5 text-[0.82rem] leading-relaxed text-foreground/90">
+				Started on your coat this morning — the hem is done and the new buttons are going on now. Still on track for Thursday.
+				— Bella
+			</p>
 		</div>
 
 		<!-- status timeline -->
@@ -80,7 +96,9 @@
 					<div class="-mt-0.5">
 						<p
 							class="text-[0.9rem] font-semibold"
-							style:color={step.state === 'pending' ? 'var(--muted-foreground)' : 'var(--foreground)'}
+							style:color={step.state === 'pending'
+								? 'var(--muted-foreground)'
+								: 'var(--foreground)'}
 						>
 							{step.label}
 						</p>
@@ -91,11 +109,19 @@
 		</ol>
 
 		<!-- shop contact -->
-		<div
-			class="mt-auto flex items-center gap-2 rounded-lg bg-secondary/60 px-3.5 py-2.5 text-[0.74rem] text-muted-foreground"
-		>
-			<Phone class="size-3.5 shrink-0" aria-hidden="true" />
-			Questions? Call (415) 555-0148 · Open till 6 PM
+		<div class="mt-auto space-y-2 pt-4">
+			<div
+				class="flex items-center gap-2 rounded-lg bg-secondary/60 px-3.5 py-2.5 text-[0.74rem] text-muted-foreground"
+			>
+				<Phone class="size-3.5 shrink-0" aria-hidden="true" />
+				Questions? Call (415) 555-0148 · Open till 6 PM
+			</div>
+			<!-- <div
+				class="flex items-center gap-2 rounded-lg bg-secondary/60 px-3.5 py-2.5 text-[0.74rem] text-muted-foreground"
+			>
+				<MapPin class="size-3.5 shrink-0" aria-hidden="true" />
+				1142 Valencia St, San Francisco · Pickup anytime
+			</div> -->
 		</div>
 	</div>
 </PhoneFrame>

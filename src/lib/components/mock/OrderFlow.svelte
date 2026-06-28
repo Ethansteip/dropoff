@@ -1,9 +1,9 @@
 <script lang="ts">
 	import PhoneFrame from './PhoneFrame.svelte';
-	import { Check, ChevronLeft, Scissors, Phone } from '@lucide/svelte';
+	import { Check, ChevronLeft, Scissors, Phone, StickyNote, MapPin } from '@lucide/svelte';
 	import { fly } from 'svelte/transition';
 
-	// Drives the looping demo: a clerk marks the order "in progress" and the
+	// Drives the looping demo: a clerk marks the order "ready for pickup" and the
 	// customer's tracking page advances in step.
 	let active = $state(false);
 	let hovering = $state(false);
@@ -11,18 +11,18 @@
 	let toast = $state(false);
 
 	// Cursor travels (in % of the order window) from a resting corner to the button.
-	const cursorX = $derived(hovering ? 31 : 82);
-	const cursorY = $derived(hovering ? 81 : 90);
+	const cursorX = $derived(hovering ? 31 : 45);
+	const cursorY = $derived(hovering ? 90 : 75);
 
 	type StepState = 'done' | 'current' | 'pending';
 	const steps = $derived<{ label: string; when: string; state: StepState }[]>([
 		{ label: 'Dropped off', when: 'Jun 24 · 9:14 AM', state: 'done' },
+		{ label: 'In progress', when: 'Jun 25 · 11:02 AM', state: 'done' },
 		{
-			label: 'In progress',
-			when: active ? 'Jun 25 · 11:02 AM' : 'Not started',
+			label: 'Ready for pickup',
+			when: active ? 'Jun 26 · 2:30 PM' : 'We’ll text you',
 			state: active ? 'current' : 'pending'
-		},
-		{ label: 'Ready for pickup', when: 'We’ll text you', state: 'pending' }
+		}
 	]);
 
 	$effect(() => {
@@ -59,7 +59,7 @@
 
 <div
 	role="img"
-	aria-label="A clerk marks an order in progress and the customer's tracking page updates automatically"
+	aria-label="A clerk marks an order ready for pickup and the customer's tracking page updates automatically"
 	class="grid items-center gap-7 lg:grid-cols-[1.25fr_0.75fr] lg:gap-9"
 >
 	<!-- business: the inside of an order -->
@@ -109,10 +109,10 @@
 				</span>
 				<span
 					class="rounded-full px-2.5 py-1 text-[0.7rem] font-medium transition-colors duration-300"
-					style:color={active ? 'var(--status-progress)' : 'var(--status-drop)'}
-					style:background={active ? 'var(--status-progress-soft)' : 'var(--status-drop-soft)'}
+					style:color={active ? 'var(--status-ready)' : 'var(--status-progress)'}
+					style:background={active ? 'var(--status-ready-soft)' : 'var(--status-progress-soft)'}
 				>
-					{active ? 'In progress' : 'Dropped off'}
+					{active ? 'Ready for pickup' : 'In progress'}
 				</span>
 			</div>
 
@@ -121,14 +121,14 @@
 				<span
 					class="flex w-full items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-medium transition-all duration-200"
 					style:transform={pressing ? 'scale(0.97)' : 'scale(1)'}
-					style:color={active ? 'var(--status-progress)' : 'var(--primary-foreground)'}
-					style:background={active ? 'var(--status-progress-soft)' : 'var(--primary)'}
-					style:box-shadow={pressing ? '0 0 0 4px var(--status-progress-soft)' : 'none'}
+					style:color={active ? 'var(--status-ready)' : 'var(--primary-foreground)'}
+					style:background={active ? 'var(--status-ready-soft)' : 'var(--primary)'}
+					style:box-shadow={pressing ? '0 0 0 4px var(--status-ready-soft)' : 'none'}
 				>
 					{#if active}
-						<Check class="size-4" /> Marked in progress
+						<Check class="size-4" /> Marked ready for pickup
 					{:else}
-						Mark in progress
+						Mark ready for pickup
 					{/if}
 				</span>
 			</div>
@@ -138,9 +138,9 @@
 		{#if toast}
 			<div
 				transition:fly={{ y: 12, duration: 260 }}
-				class="absolute bottom-3 left-1/2 flex -translate-x-1/2 items-center gap-2 whitespace-nowrap rounded-full bg-foreground px-3.5 py-2 text-[0.72rem] font-medium text-background shadow-lg"
+				class="absolute top-10 left-1/2 flex -translate-x-1/2 items-center gap-2 whitespace-nowrap rounded-full bg-foreground px-3.5 py-2 text-[0.72rem] font-medium text-background shadow-lg"
 			>
-				<Check class="size-3.5" /> Status Updated
+				<Check class="size-3.5" /> Pickup text sent to Maria
 			</div>
 		{/if}
 
@@ -165,7 +165,7 @@
 
 	<!-- customer: the tracking page reacts -->
 	<PhoneFrame label="The customer's tracking page, updating in real time">
-		<div class="flex h-full flex-col px-4 pt-5 pb-5">
+		<div class="flex h-full flex-col px-4 pt-9 pb-5">
 			<div class="flex items-center gap-2">
 				<div
 					class="flex size-8 items-center justify-center rounded-lg bg-primary text-primary-foreground"
@@ -188,6 +188,19 @@
 				<p class="text-[0.72rem] text-muted-foreground">Hem &amp; replace two buttons</p>
 			</div>
 
+			<!-- note from the shop -->
+			<div class="mt-3 rounded-lg border border-border bg-accent/40 p-3">
+				<div class="flex items-center gap-1.5">
+					<StickyNote class="size-3 text-primary" aria-hidden="true" />
+					<span class="font-mono text-[0.52rem] uppercase tracking-wide text-muted-foreground">
+						Note from the shop
+					</span>
+				</div>
+				<p class="mt-1 text-[0.74rem] leading-relaxed text-foreground/90">
+					All finished — new buttons on, hem set, and freshly pressed. See you in a bit! — Bella
+				</p>
+			</div>
+
 			<ol class="mt-4 space-y-0">
 				{#each steps as step, i (step.label)}
 					<li class="relative flex gap-3 pb-4 last:pb-0">
@@ -201,7 +214,7 @@
 						{#if step.state === 'current'}
 							<span
 								class="absolute top-[0.125rem] left-[0.0625rem] z-0 size-5 rounded-full motion-safe:animate-ping"
-								style:background="var(--status-progress)"
+								style:background="var(--status-ready)"
 								style:opacity="0.3"
 								aria-hidden="true"
 							></span>
@@ -211,16 +224,15 @@
 							style:background={step.state === 'pending'
 								? 'var(--muted)'
 								: step.state === 'current'
-									? 'var(--status-progress-soft)'
+									? 'var(--status-ready-soft)'
 									: 'var(--status-ready)'}
-							style:color={step.state === 'current' ? 'var(--status-progress)' : '#fff'}
+							style:color={step.state === 'current' ? 'var(--status-ready)' : '#fff'}
 							aria-hidden="true"
 						>
 							{#if step.state === 'done'}
 								<Check class="size-3" />
 							{:else if step.state === 'current'}
-								<span class="size-1.5 rounded-full" style:background="var(--status-progress)"
-								></span>
+								<span class="size-1.5 rounded-full" style:background="var(--status-ready)"></span>
 							{/if}
 						</span>
 						<div class="-mt-0.5">
@@ -238,11 +250,19 @@
 				{/each}
 			</ol>
 
-			<div
-				class="mt-auto flex items-center gap-2 rounded-lg bg-secondary/60 px-3 py-2 text-[0.68rem] text-muted-foreground"
-			>
-				<Phone class="size-3 shrink-0" aria-hidden="true" />
-				Questions? Call (415) 555-0148
+			<div class="mt-auto space-y-2 pt-4">
+				<div
+					class="flex items-center gap-2 rounded-lg bg-secondary/60 px-3.5 py-2.5 text-[0.74rem] text-muted-foreground"
+				>
+					<Phone class="size-3.5 shrink-0" aria-hidden="true" />
+					Questions? Call (415) 555-0148 · Open till 6 PM
+				</div>
+				<div
+					class="flex items-center gap-2 rounded-lg bg-secondary/60 px-3.5 py-2.5 text-[0.74rem] text-muted-foreground"
+				>
+					<MapPin class="size-3.5 shrink-0" aria-hidden="true" />
+					1142 Valencia St, San Francisco · Pickup anytime
+				</div>
 			</div>
 		</div>
 	</PhoneFrame>

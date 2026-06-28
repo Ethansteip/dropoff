@@ -11,7 +11,7 @@
 		{
 			icon: MessageSquareText,
 			title: 'Customer gets a text',
-			body: 'They receive an SMS with a link to track their order in real time. No app. No account.'
+			body: 'They get a text with a link to track their order in real time. No app. No account.'
 		},
 		{
 			icon: CircleCheck,
@@ -31,7 +31,8 @@
 			How it works
 		</h2>
 		<p use:reveal={{ delay: 60 }} class="mt-3 max-w-xl text-base text-muted-foreground sm:text-lg">
-			Three steps from drop-off to pickup. No training required.
+			Three steps from drop-off to pickup. You’ll send your first tracking text about ten minutes
+			after you sign up.
 		</p>
 
 		<!-- Receipt-tape connector: vertical on mobile, horizontal on desktop -->

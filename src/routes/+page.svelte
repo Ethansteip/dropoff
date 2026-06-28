@@ -12,9 +12,9 @@
 
 	let { form }: PageProps = $props();
 
-	const title = 'DropOff — Order tracking links for repair shops';
+	const title = 'DropOff — SMS order tracking for repair shops';
 	const description =
-		'DropOff sends your customers an automatic SMS with a real-time status link the moment you take in their order. When it’s ready, they get another text. Stop playing phone tag.';
+		'DropOff texts your customers a link to track their repair order, then texts them again when it’s ready. No app, no account, no more callbacks. Built for tailors, cobblers, dry cleaners, and small repair shops.';
 </script>
 
 <svelte:head>
@@ -49,8 +49,8 @@
 					use:reveal={{ delay: 120 }}
 					class="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground text-pretty lg:mx-0"
 				>
-					DropOff texts your customers a real-time tracking link the moment you take in their order.
-					When it's ready, they get another text. You stop playing phone tag.
+					The moment you take in an order, DropOff texts your customer a link to track it. When
+					it's ready, they get another text. No more callbacks, no more “is it done yet?”
 				</p>
 
 				<div use:reveal={{ delay: 180 }} class="mx-auto mt-9 max-w-md lg:mx-0">
@@ -88,9 +88,9 @@
 					They just tap the link. No app, no account.
 				</h2>
 				<p use:reveal={{ delay: 120 }} class="mt-5 text-lg leading-relaxed text-muted-foreground">
-					The text opens a simple page with your shop’s name on it. Your customer watches their
-					order move from dropped off to ready — and gets a text the second it’s done. They never
-					have to call to check.
+					The link opens a clean page with your shop’s name on it — no login, no download. Your
+					customer follows their order from dropped off to ready, and gets a text the moment it’s
+					done. So they never have to call to check.
 				</p>
 			</div>
 		</div>
@@ -115,7 +115,8 @@
 					class="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-muted-foreground"
 				>
 					Take in a new order in under a minute — name, phone, what they dropped off. DropOff texts
-					the customer for you and tracks where everything stands.
+					the customer for you and keeps every order in one place, so you always know what’s done
+					and what’s still on the bench.
 				</p>
 			</div>
 			<div use:reveal={{ delay: 120 }} class="mt-12">

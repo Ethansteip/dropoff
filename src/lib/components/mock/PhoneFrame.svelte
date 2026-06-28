@@ -13,7 +13,7 @@
 	role="img"
 	aria-label={label}
 	class={[
-		'relative mx-auto w-full max-w-[19rem] rounded-[2.5rem] border border-black/10 bg-[#23262d] p-2.5 shadow-[0_30px_60px_-25px_rgba(28,32,45,0.55)]',
+		'relative mx-auto w-full max-w-76 rounded-[2.5rem] border border-black/10 bg-[#23262d] p-2.5 shadow-[0_30px_60px_-25px_rgba(28,32,45,0.55)]',
 		className
 	]}
 >
@@ -23,9 +23,9 @@
 		aria-hidden="true"
 	>
 		<span class="h-1.5 w-1.5 rounded-full bg-white/25"></span>
-		<span class="h-1 w-20 rounded-full bg-white/15"></span>
+		<span class="h-1 w-8 rounded-full bg-white/15"></span>
 	</div>
-	<div class="flex min-h-[37rem] flex-col overflow-hidden rounded-[2rem] bg-background">
+	<div class="flex min-h-148 flex-col overflow-hidden rounded-[2rem] bg-background">
 		{@render children()}
 	</div>
 </div>

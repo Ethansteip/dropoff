@@ -76,7 +76,7 @@
 					</RadioGroup>
 
 					<Button type="submit" size="sm" variant="secondary" disabled={loading || !shopType}>
-						{loading ? 'Saving…' : 'Submit'}
+						{loading ? 'Saving…' : 'Save my answer'}
 					</Button>
 				</form>
 			{/if}
